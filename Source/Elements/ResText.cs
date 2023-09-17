@@ -153,9 +153,11 @@ namespace RAGENativeUI.Elements
             for (int i = 0; i < str.Length; i += strLen)
             {
                 string substr = str.Substring(i, Math.Min(strLen, str.Length - i));
-                NativeFunction.CallByHash<uint>(0x6c188be134e074aa, substr);      // _ADD_TEXT_COMPONENT_STRING
+                // Fixed Long String
+                // NativeFunction.CallByHash<uint>(0x6c188be134e074aa, substr);      // _ADD_TEXT_COMPONENT_STRING
+                UTF8.PushLongString(substr);
             }
-            
+
         }
     }
 }
